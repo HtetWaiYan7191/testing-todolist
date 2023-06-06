@@ -53,6 +53,10 @@ input[type="checkbox"] {
   font-size: 1.7rem;
 }
 
+.checkbox-container {
+  width: 90%;
+}
+
 .button-container {
   background-color: rgb(188, 186, 186);
 }
@@ -61,4 +65,41 @@ input[type="checkbox"] {
   color: rgb(111, 110, 110);
   cursor: pointer;
   text-decoration: underline;
+}
+
+#add-btn {
+  cursor: pointer;
+}
+
+.bg-orange {
+  background-color: orange;
+}
+
+.input-style {
+  font-size: 2rem;
+  border: none;
+  padding: 12px 15px;
+  background-color: inherit;
+}
+
+.add-to-list {
+  border-bottom: 1px solid black;
+}
+
+.description-text {
+  border: none;
+  background-color: inherit;
+  padding: 10px 12px;
+  font-size: 1.7rem;
+}
+
+.description-text:focus {
+  border: none;
+  background-color: inherit;
+  outline: none;
+}
+
+.input-style:focus {
+  border: none;
+  outline: none;
 }
