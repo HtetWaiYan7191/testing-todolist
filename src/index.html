@@ -10,24 +10,25 @@
 </head>
 <body>
     <main>
-        <div class="todolist-container row row-cols-1 gy-2 d-flex">
+        <div class="todolist-container row row-cols-1 d-flex w-100">
                 <div class="col title d-flex justify-content-between">
                     <h2 class="p-2">Today's To Do</h2>
                     <i class="fa-solid fa-arrows-rotate fs-3 p-2"></i>
                 </div>
            
-            <ul class="col tasks-container p-0 mb-0">
-                <li class="d-flex justify-content-between align-items-center task p-4">
+            
+                <div class="d-flex justify-content-between align-items-center add-to-list p-4">
                     <input type="text" id="add-task-input" placeholder="Add to your list...">
-                    <i class="fa-solid fa-plus fs-3"></i>
-                </li> 
-                <li class="d-flex align-items-center task p-4 justify-content-between">
+                    <i class="fa-solid fa-plus fs-3" id="add-btn"></i>
+                </div> 
+            <ul class="col tasks-container p-0 mb-0">
+                <!-- <li class="d-flex align-items-center task p-4 justify-content-between">
                     <div class="checkbox-container">
                         <input type="checkbox" name="checkbox1">
                         <label >This is checkbox1</label>
                     </div>
-                    <i class="fa-solid fa-ellipsis-vertical fs-3"></i>
-                </li>
+                    <i class="fa-solid fa-ellipsis-vertical fs-3 "></i>
+                </li> -->
             </ul>
 
             <div class="button-container m-0 py-3">
