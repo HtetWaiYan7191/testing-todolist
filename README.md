@@ -7,6 +7,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -53,6 +54,13 @@
 - **[Edit_Tasks]**
 - **[Interactive_website_using_javascript]**
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://htetwaiyan7191.github.io/testing-todolist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
