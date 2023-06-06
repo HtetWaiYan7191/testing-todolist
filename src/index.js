@@ -60,6 +60,7 @@ const showTask = () => {
     readOnlyAdd(inputText);
 
     checkbox.addEventListener('change', (event) => {
+      inputText.classList.toggle('linethrough-text');
       const currentState = event.target.checked;
 
       if (currentState !== previousState) {
@@ -127,6 +128,9 @@ const addTask = () => {
     showTask();
   }
 };
-
+const loadDom = () => {
+  document.addEventListener('DOMContentLoaded', showTask);
+};
+loadDom();
 document.addEventListener('DOMContentLoaded', showTask);
 addBtn.addEventListener('click', addTask);

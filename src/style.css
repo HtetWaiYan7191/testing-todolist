@@ -103,3 +103,11 @@ input[type="checkbox"] {
   border: none;
   outline: none;
 }
+
+.linethrough-text {
+  text-decoration: line-through;
+}
+
+#load-btn {
+  cursor: pointer;
+}
