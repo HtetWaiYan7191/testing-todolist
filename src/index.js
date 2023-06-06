@@ -1,22 +1,13 @@
-/* eslint-disable no-unused-vars */
-import _, { add } from 'lodash';
 import './style.css';
+import storeLocalStorage from './modules/storeLocalStorage.js';
+import sortArr from './modules/sortArr.js';
+import edit from './modules/EditData.js';
+import clearAll from './modules/clearAll.js';
 
 const taskContainer = document.querySelector('.tasks-container');
 const addBtn = document.getElementById('add-btn');
 const clearBtn = document.getElementById('clear-btn');
 let storeTasks = JSON.parse(localStorage.getItem('Tasks')) || [];
-
-const storeLocalStorage = (storeTasks) => {
-  localStorage.setItem('Tasks', JSON.stringify(storeTasks));
-};
-
-const sortArr = (arr) => {
-  arr.forEach((element, index) => {
-    element.index = index + 1;
-  });
-  return arr;
-};
 
 const showTask = () => {
   taskContainer.innerHTML = '';
@@ -39,14 +30,6 @@ const showTask = () => {
       showTask();
     });
   };
-
-  const edit = (description, index) => {
-    storeTasks[index].description = description;
-    storeLocalStorage(storeTasks);
-  };
-
-  const addedTasks = document.querySelectorAll('.task');
-
   const checkboxContainer = document.querySelectorAll('.checkbox-container');
 
   const readOnlyAdd = (inputText) => {
@@ -60,8 +43,12 @@ const showTask = () => {
     readOnlyAdd(inputText);
 
     checkbox.addEventListener('change', (event) => {
-      inputText.classList.toggle('linethrough-text');
       const currentState = event.target.checked;
+      if (currentState) {
+        inputText.classList.add('linethrough-text');
+      } else {
+        inputText.classList.remove('linethrough-text');
+      }
 
       if (currentState !== previousState) {
         storeTasks.forEach((task) => {
@@ -77,14 +64,7 @@ const showTask = () => {
     });
   });
 
-  const clearAll = () => {
-    storeTasks = storeTasks.filter((element) => !element.completed);
-    storeLocalStorage(storeTasks);
-    showTask();
-  };
-
-  clearBtn.addEventListener('click', clearAll);
-
+  const addedTasks = document.querySelectorAll('.task');
   addedTasks.forEach((task, index) => {
     task.addEventListener('dblclick', (e) => {
       e.target.readOnly = false;
@@ -108,7 +88,7 @@ const showTask = () => {
     // Edit
     task.addEventListener('input', () => {
       const data = task.querySelector('input[type="text"]').value.trim();
-      edit(data, index);
+      edit(storeTasks, data, index);
     });
   });
 };
@@ -128,6 +108,13 @@ const addTask = () => {
     showTask();
   }
 };
+
+clearBtn.addEventListener('click', () => {
+  storeTasks = clearAll(storeTasks);
+  storeLocalStorage(storeTasks);
+  showTask();
+});
+
 const loadDom = () => {
   document.addEventListener('DOMContentLoaded', showTask);
 };

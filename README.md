@@ -50,6 +50,7 @@
 
 - **[Add_Your_Daily_Tasks]**
 - **[Remove_Completed_Tasks]**
+- **[Edit_Tasks]**
 - **[Interactive_website_using_javascript]**
 
 
