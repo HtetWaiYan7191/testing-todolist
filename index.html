@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <!-- LINK TO BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- LINK TO FONTAWESOME -->
+<script defer src="runtime.33f42a2234d708b4c1f0.js"></script><script defer src="main.33f42a2234d708b4c1f0.js"></script></head>
+<body>
+    <main>
+        <div class="todolist-container row row-cols-1 d-flex w-100">
+                <div class="col title d-flex justify-content-between">
+                    <h2 class="p-2">Today's To Do</h2>
+                    <i class="fa-solid fa-arrows-rotate fs-3 p-2" id="load-btn"></i>
+                </div>
+           
+            
+                <div class="d-flex justify-content-between align-items-center add-to-list p-4">
+                    <input type="text" id="add-task-input" placeholder="Add to your list...">
+                    <i class="fa-solid fa-plus fs-3" id="add-btn"></i>
+                </div> 
+            <ul class="col tasks-container p-0 mb-0">
+            </ul>
+
+            <div class="button-container m-0 py-3">
+                <span id="clear-btn" class="text-center d-block fs-5 fw-medium">Clear all completed</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://kit.fontawesome.com/9e6b5903a6.js" crossorigin="anonymous"></script>
+</body>
+</html>
