@@ -1,4 +1,4 @@
-import removeTask from './modules/removeTask.js';
+import removeTask from '../src/modules/removeTask.js';
 
 describe('removeTask', () => {
   const tasks = [

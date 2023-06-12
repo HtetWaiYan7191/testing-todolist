@@ -1,4 +1,4 @@
-import addTask from './modules/addTask.js';
+import addTask from '../src/modules/addTask.js';
 
 describe('addTask', () => {
   const tasks = [
