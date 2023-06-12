@@ -1,5 +1,5 @@
-const storeLocalStorage = (storeTasks) => {
-  localStorage.setItem('Tasks', JSON.stringify(storeTasks));
+const storeLocalStorage = (storeDataTasks) => {
+  localStorage.setItem('Tasks', JSON.stringify(storeDataTasks));
 };
 
 export default storeLocalStorage;
