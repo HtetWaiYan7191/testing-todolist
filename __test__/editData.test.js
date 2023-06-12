@@ -5,7 +5,7 @@ describe('editData', () => {
     { description: 'Task1', completed: false },
     { description: 'Task2', completed: true },
   ];
-  const oldDescription = tasks[0].description
+  const oldDescription = tasks[0].description;
   const index = 0;
   const updateDescription = 'this is updated task';
   test('should change tasks description in the tasks array', () => {
