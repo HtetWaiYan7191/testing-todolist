@@ -1,7 +1,7 @@
 import './style.css';
 import storeLocalStorage from './modules/storeLocalStorage.js';
 import sortArr from './modules/sortArr.js';
-import edit from './modules/EditData.js';
+import edit from './modules/editData.js';
 import clearAll from './modules/clearAll.js';
 import addTask from './modules/addTask.js';
 import removeTask from './modules/removeTask.js';
@@ -90,7 +90,8 @@ const showTask = () => {
     // Edit
     task.addEventListener('input', () => {
       const data = task.querySelector('input[type="text"]').value.trim();
-      edit(storeTasks, data, index);
+      storeTasks = edit(storeTasks, data, index);
+      showTask();
     });
   });
 };
