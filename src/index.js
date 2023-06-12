@@ -3,6 +3,8 @@ import storeLocalStorage from './modules/storeLocalStorage.js';
 import sortArr from './modules/sortArr.js';
 import edit from './modules/EditData.js';
 import clearAll from './modules/clearAll.js';
+import addTask from './modules/addTask.js';
+import removeTask from './modules/removeTask.js';
 
 const taskContainer = document.querySelector('.tasks-container');
 const addBtn = document.getElementById('add-btn');
@@ -25,7 +27,7 @@ const showTask = () => {
 
   const remove = (item, index) => {
     item.addEventListener('click', () => {
-      storeTasks.splice(index, 1);
+      storeTasks = removeTask(storeTasks, index);
       storeLocalStorage(sortArr(storeTasks));
       showTask();
     });
@@ -93,22 +95,6 @@ const showTask = () => {
   });
 };
 
-const addTask = () => {
-  const descriptionInput = document.getElementById('add-task-input');
-  const description = descriptionInput.value.trim();
-  if (description !== '') {
-    const taskObject = {
-      description,
-      completed: false,
-      index: storeTasks.length + 1,
-    };
-    storeTasks.push(taskObject);
-    storeLocalStorage(storeTasks);
-    descriptionInput.value = '';
-    showTask();
-  }
-};
-
 clearBtn.addEventListener('click', () => {
   storeTasks = clearAll(storeTasks);
   storeLocalStorage(storeTasks);
@@ -120,4 +106,18 @@ const loadDom = () => {
 };
 loadDom();
 document.addEventListener('DOMContentLoaded', showTask);
-addBtn.addEventListener('click', addTask);
+addBtn.addEventListener('click', () => {
+  const descriptionInput = document.getElementById('add-task-input');
+  const description = descriptionInput.value.trim();
+  if (description !== '') {
+    const newTask = {
+      description,
+      completed: false,
+      index: storeTasks.length + 1,
+    };
+    storeTasks = addTask(storeTasks, newTask);
+    storeLocalStorage(storeTasks);
+    descriptionInput.value = '';
+    showTask();
+  }
+});
