@@ -118,9 +118,6 @@ You can deploy this project using: GitHub Pages
 - GitHub: [@HtetWaiYan7191](https://github.com/HtetWaiYan7191)
 - GitHub: [@olanikegloria](https://github.com/olanikegloria)
 
-
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
