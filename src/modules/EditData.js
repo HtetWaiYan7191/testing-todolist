@@ -1,8 +1,9 @@
-import storeLocalStorage from './storeLocalStorage.js';
+// import storeLocalStorage from './storeLocalStorage.js';
 
 const edit = (storeTasks, description, index) => {
-  storeTasks[index].description = description;
-  storeLocalStorage(storeTasks);
+  const updatedTasks = [...storeTasks];
+  updatedTasks[index] = { ...updatedTasks[index], description };
+  return updatedTasks;
 };
 
 export default edit;
