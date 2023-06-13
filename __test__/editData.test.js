@@ -1,4 +1,4 @@
-import edit from '../src/modules/editData.js';
+import edit from '../src/modules/EditData.js';
 
 describe('editData', () => {
   let tasks = [
