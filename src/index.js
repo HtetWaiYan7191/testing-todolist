@@ -5,6 +5,7 @@ import edit from './modules/EditData.js';
 import clearAll from './modules/clearAll.js';
 import addTask from './modules/addTask.js';
 import removeTask from './modules/removeTask.js';
+import loadTask from './modules/loadTask.js';
 
 const taskContainer = document.querySelector('.tasks-container');
 const addBtn = document.getElementById('add-btn');
@@ -13,17 +14,19 @@ let storeTasks = JSON.parse(localStorage.getItem('Tasks')) || [];
 
 const showTask = () => {
   taskContainer.innerHTML = '';
-  storeTasks.forEach((task, index) => {
-    taskContainer.innerHTML += `
-            <li class="d-flex align-items-center task p-4 justify-content-between">
-                <div class="checkbox-container">
-                    <input type="checkbox" name="${task.description}" id="">
-                    <input type="text" value="${task.description}" class="description-text w-75">
-                </div>
-                <i class="fa-solid fa-ellipsis-vertical fs-3" id=${index}></i>
-        </li>
-            `;
-  });
+  const taskListHTML = loadTask(storeTasks);
+  taskContainer.innerHTML = taskListHTML;
+  // storeTasks.forEach((task, index) => {
+  //   taskContainer.innerHTML += `
+  //           <li class="d-flex align-items-center task p-4 justify-content-between">
+  //               <div class="checkbox-container">
+  //                   <input type="checkbox" name="${task.description}" id="">
+  //                   <input type="text" value="${task.description}" class="description-text w-75">
+  //               </div>
+  //               <i class="fa-solid fa-ellipsis-vertical fs-3" id=${index}></i>
+  //       </li>
+  //           `;
+  // });
 
   const remove = (item, index) => {
     item.addEventListener('click', () => {
@@ -32,6 +35,7 @@ const showTask = () => {
       showTask();
     });
   };
+
   const checkboxContainer = document.querySelectorAll('.checkbox-container');
 
   const readOnlyAdd = (inputText) => {
@@ -102,11 +106,11 @@ clearBtn.addEventListener('click', () => {
   showTask();
 });
 
-const loadDom = () => {
-  document.addEventListener('DOMContentLoaded', showTask);
-};
-loadDom();
-document.addEventListener('DOMContentLoaded', showTask);
+function handleDOMContentLoaded() {
+  showTask();
+}
+
+document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
 addBtn.addEventListener('click', () => {
   const descriptionInput = document.getElementById('add-task-input');
   const description = descriptionInput.value.trim();
