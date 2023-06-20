@@ -7,25 +7,25 @@
 }
 
 :root {
-  --purple:#B799FF;
-  --light-purple:#ACBCFF;
-  --sky-blue:#AEE2FF;
-  --light-blue:#E6FFFD;
+  --purple: #b799ff;
+  --light-purple: #acbcff;
+  --sky-blue: #aee2ff;
+  --light-blue: #e6fffd;
 }
 
 body {
-  background-color:var(--sky-blue)
+  background-color: var(--sky-blue);
 }
 
 main {
   margin: 20px auto;
   width: 50%;
-  background-color:var(--sky-blue);
-  color: #FFFFFF;
+  background-color: var(--sky-blue);
+  color: #fff;
 }
 
 .todolist-container {
-  color: #FFFFFF;
+  color: #fff;
   margin: 0;
   border-radius: 16px;
   overflow: hidden;
@@ -39,7 +39,7 @@ main {
 
 .task {
   background-color: var(--purple);
-  border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid #fff;
 }
 
 #add-task-input {
@@ -71,7 +71,7 @@ input[type="checkbox"] {
 }
 
 .button-container {
-  background-color:var(--light-blue);
+  background-color: var(--light-blue);
 }
 
 #clear-btn {
@@ -107,7 +107,7 @@ input[type="checkbox"] {
 }
 
 .add-to-list {
-  background-color: #FFFFFF;
+  background-color: #fff;
   border-bottom: 1px solid var(--sky-blue);
 }
 
