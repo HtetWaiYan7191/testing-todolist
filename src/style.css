@@ -20,12 +20,15 @@ body {
 main {
   margin: 20px auto;
   width: 50%;
-  background-color: #fff;
+  background-color:var(--sky-blue);
+  color: #FFFFFF;
 }
-
+.add-to-list
 .todolist-container {
-  color: var(--light-blue);
+  color: #FFFFFF;
   margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .title {
@@ -87,6 +90,8 @@ input[type="checkbox"] {
 #add-btn {
   color: var(--purple);
   cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
 }
 
 .bg-orange {
@@ -101,6 +106,7 @@ input[type="checkbox"] {
 }
 
 .add-to-list {
+  background-color: #FFFFFF;
   border-bottom: 1px solid black;
 }
 
