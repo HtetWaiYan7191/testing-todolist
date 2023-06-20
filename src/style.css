@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: var(--sky-blue);
+  background-color: var(--light-purple);
 }
 
 main {
@@ -22,29 +22,43 @@ main {
   width: 50%;
   background-color: var(--sky-blue);
   color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .todolist-container {
   color: #fff;
   margin: 0;
-  border-radius: 16px;
   overflow: hidden;
 }
 
 .title {
-  background-color: var(--purple);
-  border-bottom: 1px solid var(--sky-blue);
+  background-color:var(--purple);
   padding: 10px 12px;
 }
 
-.task {
-  background-color: var(--purple);
-  border-bottom: 1px solid #fff;
+.task:nth-child(even) {
+  background-color: rgba(183, 153, 255,1); 
+}
+
+.task:nth-child(even):hover {
+  background-color: rgba(183, 153, 255,0.9); 
+}
+
+
+.task:nth-child(odd) {
+  background-color:   rgba(101, 84, 175, 1);
+}
+
+.task:nth-child(odd):hover {
+  background-color:   rgba(101, 84, 175, 0.9);
 }
 
 #add-task-input {
-  font-size: 2rem;
+  font-size: 1.7rem;
   border: none;
+  color: var(--purple);
+  font-weight: 600;
   padding: 12px 15px;
   font-style: italic;
 }
@@ -55,19 +69,21 @@ main {
 }
 
 input[type="checkbox"] {
-  transform: scale(2);
-  border: 2px solid #999; /* Add a border */
+  transform: scale(1.5);
   padding-left: 5px;
   margin-left: 1.5rem;
   margin-right: 1rem;
+  border-radius: 12px;
 }
 
-.checkbox-container label {
-  font-size: 1.7rem;
+input[type="checkbox"]:checked {
+  background-color: yellow;
 }
+
 
 .checkbox-container {
   width: 90%;
+
 }
 
 .button-container {
@@ -113,9 +129,11 @@ input[type="checkbox"] {
 
 .description-text {
   border: none;
+  color: #fff;
   background-color: inherit;
   padding: 10px 12px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .description-text:focus {
@@ -135,8 +153,19 @@ input[type="checkbox"] {
 
 #load-btn {
   cursor: pointer;
+  font-size: 21px;
+  animation: rotation 2s  infinite linear ;
 }
 
 ::placeholder {
   color: var(--purple);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
