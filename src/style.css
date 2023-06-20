@@ -76,11 +76,6 @@ input[type="checkbox"] {
   border-radius: 12px;
 }
 
-input[type="checkbox"]:checked {
-  background-color: yellow;
-}
-
-
 .checkbox-container {
   width: 90%;
 
@@ -109,10 +104,6 @@ input[type="checkbox"]:checked {
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
-}
-
-.bg-orange {
-  background-color: orange;
 }
 
 .input-style {
@@ -155,6 +146,10 @@ input[type="checkbox"]:checked {
   cursor: pointer;
   font-size: 21px;
   animation: rotation 2s  infinite linear ;
+}
+
+.bg-orange {
+  background-color: #E966A0 !important;
 }
 
 ::placeholder {
