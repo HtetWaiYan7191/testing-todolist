@@ -6,8 +6,15 @@
   list-style: none;
 }
 
+:root {
+  --purple:#B799FF;
+  --light-purple:#ACBCFF;
+  --sky-blue:#AEE2FF;
+  --light-blue:#E6FFFD;
+}
+
 body {
-  background-color: rgb(188, 168, 145);
+  background-color:var(--sky-blue)
 }
 
 main {
@@ -17,10 +24,12 @@ main {
 }
 
 .todolist-container {
+  color: var(--light-blue);
   margin: 0;
 }
 
 .title {
+  background-color: var(--purple);
   border-bottom: 1px solid black;
   padding: 10px 12px;
 }
@@ -58,16 +67,25 @@ input[type="checkbox"] {
 }
 
 .button-container {
-  background-color: rgb(188, 186, 186);
+  background-color:#FFFFFF;
+}
+
+#clear-btn {
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 18px;
+  padding: 5px 8px;
+  background-color: var(--purple);
 }
 
 #clear-btn:hover {
-  color: rgb(111, 110, 110);
+  background-color: var(--light-purple);
+  font-weight: 600;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 #add-btn {
+  color: var(--purple);
   cursor: pointer;
 }
 
