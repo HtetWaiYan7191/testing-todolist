@@ -23,7 +23,7 @@ main {
   background-color:var(--sky-blue);
   color: #FFFFFF;
 }
-.add-to-list
+
 .todolist-container {
   color: #FFFFFF;
   margin: 0;
@@ -33,12 +33,13 @@ main {
 
 .title {
   background-color: var(--purple);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--sky-blue);
   padding: 10px 12px;
 }
 
 .task {
-  border-bottom: 1px solid black;
+  background-color: var(--purple);
+  border-bottom: 1px solid #FFFFFF;
 }
 
 #add-task-input {
@@ -70,7 +71,7 @@ input[type="checkbox"] {
 }
 
 .button-container {
-  background-color:#FFFFFF;
+  background-color:var(--light-blue);
 }
 
 #clear-btn {
@@ -107,7 +108,7 @@ input[type="checkbox"] {
 
 .add-to-list {
   background-color: #FFFFFF;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--sky-blue);
 }
 
 .description-text {
@@ -134,4 +135,8 @@ input[type="checkbox"] {
 
 #load-btn {
   cursor: pointer;
+}
+
+::placeholder {
+  color: var(--purple);
 }
