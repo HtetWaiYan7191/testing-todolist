@@ -36,21 +36,7 @@ const showTask = () => {
     });
   };
 
-  const checkboxContainers = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
-  const readOnlyAdd = (inputText) => {
-    inputText.readOnly = true;
-  };
-  checkboxContainers.forEach((checkbox) => {
-    checkbox.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        console.log('Checkbox is checked');
-      // Perform actions when checkbox is checked
-      } else {
-        console.log('Checkbox is unchecked');
-      // Perform actions when checkbox is unchecked
-      }
-    });
-  });
+  // console.log(htet)
 
   // checkboxContainer.forEach((checkbox) => {
   //   const inputValues = checkbox.parentElement.firstElementChild.firstChild.nextElementSibling;
@@ -82,21 +68,43 @@ const showTask = () => {
   //   });
   // });
 
-  const addedTasks = document.querySelectorAll('.task');
+  const checkboxContainers = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
+  const readOnlyAdd = (inputText) => {
+    inputText.readOnly = true;
+  };
+  checkboxContainers.forEach((checkbox) => {
+    const toDoTask = checkbox.parentElement.firstElementChild.nextElementSibling;
+    readOnlyAdd(toDoTask);
+    checkbox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        toDoTask.classList.add('linethrough-text');
+        console.log('Checkbox is checked');
+      // Perform actions when checkbox is checked
+      } else {
+        console.log('Checkbox is unchecked');
+        toDoTask.classList.remove('linethrough-text');
+      // Perform actions when checkbox is unchecked
+      }
+    });
+  });
+
+  const addedTasks = document.querySelectorAll('.description-text');
   addedTasks.forEach((task, index) => {
     task.addEventListener('dblclick', (e) => {
       e.target.readOnly = false;
-      if (task.querySelector('.fa-ellipsis-vertical')) {
-        const ellipsisIcon = task.querySelector('.fa-ellipsis-vertical');
+      const tempStoreIcons = task.parentElement.parentElement.querySelector('.fa-ellipsis-vertical');
+      if (tempStoreIcons) {
+        const ellipsisIcon = tempStoreIcons;
+        console.log(ellipsisIcon);
         const index = ellipsisIcon.getAttribute('id');
-        task.classList.add('bg-orange');
+        task.parentElement.parentElement.classList.add('bg-orange');
         ellipsisIcon.classList.remove('fa-ellipsis-vertical');
         ellipsisIcon.classList.add('fa-solid');
         ellipsisIcon.classList.add('fa-trash');
         remove(ellipsisIcon, index);
       } else {
-        task.classList.remove('bg-orange');
-        const trashIcon = task.querySelector('.fa-trash');
+        task.parentElement.parentElement.classList.remove('bg-orange');
+        const trashIcon = task.parentElement.parentElement.querySelector('.fa-trash');
         trashIcon.classList.remove('fa-soild');
         trashIcon.classList.remove('fa-trash');
         trashIcon.classList.add('fa-ellipsis-vertical');
@@ -105,7 +113,7 @@ const showTask = () => {
     });
     // Edit
     task.addEventListener('input', () => {
-      const data = task.querySelector('input[type="text"]').value.trim();
+      const data = task.value.trim();
       storeTasks = edit(storeTasks, data, index);
       showTask();
     });

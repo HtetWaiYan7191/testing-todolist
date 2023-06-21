@@ -61,6 +61,7 @@ main {
   font-weight: 600;
   padding: 12px 15px;
   font-style: italic;
+  
 }
 
 #add-task-input:focus {
@@ -124,12 +125,14 @@ input[type="checkbox"] {
   padding: 10px 12px;
   font-size: 1.5rem;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .description-text:focus {
   border: none;
   background-color: inherit;
   outline: none;
+  cursor: pointer;
 }
 
 .input-style:focus {
