@@ -16,17 +16,6 @@ const showTask = () => {
   taskContainer.innerHTML = '';
   const taskListHTML = loadTask(storeTasks);
   taskContainer.innerHTML = taskListHTML;
-  // storeTasks.forEach((task, index) => {
-  //   taskContainer.innerHTML += `
-  //           <li class="d-flex align-items-center task p-4 justify-content-between">
-  //               <div class="checkbox-container">
-  //                   <input type="checkbox" name="${task.description}" id="">
-  //                   <input type="text" value="${task.description}" class="description-text w-75">
-  //               </div>
-  //               <i class="fa-solid fa-ellipsis-vertical fs-3" id=${index}></i>
-  //       </li>
-  //           `;
-  // });
 
   const remove = (item, index) => {
     item.addEventListener('click', () => {
@@ -35,38 +24,6 @@ const showTask = () => {
       showTask();
     });
   };
-
-  // console.log(htet)
-
-  // checkboxContainer.forEach((checkbox) => {
-  //   const inputValues = checkbox.parentElement.firstElementChild.firstChild.nextElementSibling;
-  //   console.log(inputValues)
-  //   let previousState = false;
-  //   let currentState = false;
-  //   readOnlyAdd(inputValues);
-  //   checkbox.addEventListener('change', (event) => {
-  //     if (event.target.checked) {
-  //       console.log(inputValues.classList)
-
-  //     } else {
-  //       console.log('else');
-  //     }
-
-  // if (currentState !== previousState) {
-  //   storeTasks.forEach((task) => {
-  //     if (task.description === inputValues.value) {
-  //       task.completed = currentState;
-  //     }
-  //   });
-
-  //   storeLocalStorage(storeTasks);
-  // }
-
-  //     previousState = currentState;
-  //     currentState = !previousState;
-  //     console.log(currentState)
-  //   });
-  // });
 
   const checkboxContainers = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
   const readOnlyAdd = (inputText) => {
@@ -121,10 +78,10 @@ const showTask = () => {
       }
     });
     // Edit
-    task.addEventListener('input', (e) => {
-      e.preventDefault();
+    task.addEventListener('change', () => {
       const data = task.value.trim();
       storeTasks = edit(storeTasks, data, index);
+      storeLocalStorage(storeTasks);
       showTask();
     });
   });
