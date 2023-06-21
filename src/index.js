@@ -36,39 +36,51 @@ const showTask = () => {
     });
   };
 
-  const checkboxContainer = document.querySelectorAll('.checkbox-container');
-
+  const checkboxContainers = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
   const readOnlyAdd = (inputText) => {
     inputText.readOnly = true;
   };
-
-  checkboxContainer.forEach((checkbox) => {
-    const inputText = checkbox.querySelector(':scope > input[type="text"]');
-    let previousState = checkbox.checked;
-
-    readOnlyAdd(inputText);
-
-    checkbox.addEventListener('change', (event) => {
-      const currentState = event.target.checked;
-      if (currentState) {
-        inputText.classList.add('linethrough-text');
+  checkboxContainers.forEach((checkbox) => {
+    checkbox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        console.log('Checkbox is checked');
+      // Perform actions when checkbox is checked
       } else {
-        inputText.classList.remove('linethrough-text');
+        console.log('Checkbox is unchecked');
+      // Perform actions when checkbox is unchecked
       }
-
-      if (currentState !== previousState) {
-        storeTasks.forEach((task) => {
-          if (task.description === inputText.value) {
-            task.completed = currentState;
-          }
-        });
-
-        storeLocalStorage(storeTasks);
-      }
-
-      previousState = currentState;
     });
   });
+
+  // checkboxContainer.forEach((checkbox) => {
+  //   const inputValues = checkbox.parentElement.firstElementChild.firstChild.nextElementSibling;
+  //   console.log(inputValues)
+  //   let previousState = false;
+  //   let currentState = false;
+  //   readOnlyAdd(inputValues);
+  //   checkbox.addEventListener('change', (event) => {
+  //     if (event.target.checked) {
+  //       console.log(inputValues.classList)
+
+  //     } else {
+  //       console.log('else');
+  //     }
+
+  // if (currentState !== previousState) {
+  //   storeTasks.forEach((task) => {
+  //     if (task.description === inputValues.value) {
+  //       task.completed = currentState;
+  //     }
+  //   });
+
+  //   storeLocalStorage(storeTasks);
+  // }
+
+  //     previousState = currentState;
+  //     currentState = !previousState;
+  //     console.log(currentState)
+  //   });
+  // });
 
   const addedTasks = document.querySelectorAll('.task');
   addedTasks.forEach((task, index) => {
