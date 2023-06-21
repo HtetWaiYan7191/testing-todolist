@@ -33,25 +33,24 @@ main {
 }
 
 .title {
-  background-color:var(--purple);
+  background-color: var(--purple);
   padding: 10px 12px;
 }
 
 .task:nth-child(even) {
-  background-color: rgba(183, 153, 255,1); 
+  background-color: rgba(183, 153, 255, 1);
+}
+
+.task:nth-child(odd) {
+  background-color: rgba(101, 84, 175, 1);
 }
 
 .task:nth-child(even):hover {
-  background-color: rgba(183, 153, 255,0.9); 
-}
-
-
-.task:nth-child(odd) {
-  background-color:   rgba(101, 84, 175, 1);
+  background-color: rgba(183, 153, 255, 0.9);
 }
 
 .task:nth-child(odd):hover {
-  background-color:   rgba(101, 84, 175, 0.9);
+  background-color: rgba(101, 84, 175, 0.9);
 }
 
 #add-task-input {
@@ -61,7 +60,6 @@ main {
   font-weight: 600;
   padding: 12px 15px;
   font-style: italic;
-  
 }
 
 #add-task-input:focus {
@@ -149,11 +147,11 @@ input[type="checkbox"] {
 #load-btn {
   cursor: pointer;
   font-size: 21px;
-  animation: rotation 2s  infinite linear ;
+  animation: rotation 2s  infinite linear;
 }
 
 .bg-orange {
-  background-color: #E966A0 !important;
+  background-color: #e966a0 !important;
 }
 
 ::placeholder {
@@ -164,6 +162,7 @@ input[type="checkbox"] {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
