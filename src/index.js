@@ -16,17 +16,6 @@ const showTask = () => {
   taskContainer.innerHTML = '';
   const taskListHTML = loadTask(storeTasks);
   taskContainer.innerHTML = taskListHTML;
-  // storeTasks.forEach((task, index) => {
-  //   taskContainer.innerHTML += `
-  //           <li class="d-flex align-items-center task p-4 justify-content-between">
-  //               <div class="checkbox-container">
-  //                   <input type="checkbox" name="${task.description}" id="">
-  //                   <input type="text" value="${task.description}" class="description-text w-75">
-  //               </div>
-  //               <i class="fa-solid fa-ellipsis-vertical fs-3" id=${index}></i>
-  //       </li>
-  //           `;
-  // });
 
   const remove = (item, index) => {
     item.addEventListener('click', () => {
@@ -36,55 +25,52 @@ const showTask = () => {
     });
   };
 
-  const checkboxContainer = document.querySelectorAll('.checkbox-container');
-
+  const checkboxContainers = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
   const readOnlyAdd = (inputText) => {
     inputText.readOnly = true;
   };
-
-  checkboxContainer.forEach((checkbox) => {
-    const inputText = checkbox.querySelector(':scope > input[type="text"]');
+  checkboxContainers.forEach((checkbox) => {
     let previousState = checkbox.checked;
-
-    readOnlyAdd(inputText);
-
-    checkbox.addEventListener('change', (event) => {
-      const currentState = event.target.checked;
-      if (currentState) {
-        inputText.classList.add('linethrough-text');
+    const toDoTask = checkbox.parentElement.firstElementChild.nextElementSibling;
+    readOnlyAdd(toDoTask);
+    checkbox.addEventListener('change', (e) => {
+      const currentState = e.target.checked;
+      if (e.target.checked) {
+        toDoTask.classList.add('linethrough-text');
       } else {
-        inputText.classList.remove('linethrough-text');
+        toDoTask.classList.remove('linethrough-text');
       }
 
       if (currentState !== previousState) {
         storeTasks.forEach((task) => {
-          if (task.description === inputText.value) {
+          if (task.description === toDoTask.value) {
             task.completed = currentState;
           }
         });
 
         storeLocalStorage(storeTasks);
       }
-
       previousState = currentState;
     });
   });
 
-  const addedTasks = document.querySelectorAll('.task');
+  const addedTasks = document.querySelectorAll('.description-text');
   addedTasks.forEach((task, index) => {
     task.addEventListener('dblclick', (e) => {
+      e.preventDefault();
       e.target.readOnly = false;
-      if (task.querySelector('.fa-ellipsis-vertical')) {
-        const ellipsisIcon = task.querySelector('.fa-ellipsis-vertical');
+      const tempStoreIcons = task.parentElement.parentElement.querySelector('.fa-ellipsis-vertical');
+      if (tempStoreIcons) {
+        const ellipsisIcon = tempStoreIcons;
         const index = ellipsisIcon.getAttribute('id');
-        task.classList.add('bg-orange');
+        task.parentElement.parentElement.classList.add('bg-orange');
         ellipsisIcon.classList.remove('fa-ellipsis-vertical');
         ellipsisIcon.classList.add('fa-solid');
         ellipsisIcon.classList.add('fa-trash');
         remove(ellipsisIcon, index);
       } else {
-        task.classList.remove('bg-orange');
-        const trashIcon = task.querySelector('.fa-trash');
+        task.parentElement.parentElement.classList.remove('bg-orange');
+        const trashIcon = task.parentElement.parentElement.querySelector('.fa-trash');
         trashIcon.classList.remove('fa-soild');
         trashIcon.classList.remove('fa-trash');
         trashIcon.classList.add('fa-ellipsis-vertical');
@@ -92,9 +78,10 @@ const showTask = () => {
       }
     });
     // Edit
-    task.addEventListener('input', () => {
-      const data = task.querySelector('input[type="text"]').value.trim();
+    task.addEventListener('change', () => {
+      const data = task.value.trim();
       storeTasks = edit(storeTasks, data, index);
+      storeLocalStorage(storeTasks);
       showTask();
     });
   });

@@ -6,32 +6,58 @@
   list-style: none;
 }
 
+:root {
+  --purple: #b799ff;
+  --light-purple: #acbcff;
+  --sky-blue: #aee2ff;
+  --light-blue: #e6fffd;
+}
+
 body {
-  background-color: rgb(188, 168, 145);
+  background-color: var(--light-purple);
 }
 
 main {
   margin: 20px auto;
   width: 50%;
-  background-color: #fff;
+  background-color: var(--sky-blue);
+  color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .todolist-container {
+  color: #fff;
   margin: 0;
+  overflow: hidden;
 }
 
 .title {
-  border-bottom: 1px solid black;
+  background-color: var(--purple);
   padding: 10px 12px;
 }
 
-.task {
-  border-bottom: 1px solid black;
+.task:nth-child(even) {
+  background-color: rgba(183, 153, 255, 1);
+}
+
+.task:nth-child(odd) {
+  background-color: rgba(101, 84, 175, 1);
+}
+
+.task:nth-child(even):hover {
+  background-color: rgba(183, 153, 255, 0.9);
+}
+
+.task:nth-child(odd):hover {
+  background-color: rgba(101, 84, 175, 0.9);
 }
 
 #add-task-input {
-  font-size: 2rem;
+  font-size: 1.7rem;
   border: none;
+  color: var(--purple);
+  font-weight: 600;
   padding: 12px 15px;
   font-style: italic;
 }
@@ -42,15 +68,11 @@ main {
 }
 
 input[type="checkbox"] {
-  transform: scale(2);
-  border: 2px solid #999; /* Add a border */
+  transform: scale(1.5);
   padding-left: 5px;
   margin-left: 1.5rem;
   margin-right: 1rem;
-}
-
-.checkbox-container label {
-  font-size: 1.7rem;
+  border-radius: 12px;
 }
 
 .checkbox-container {
@@ -58,21 +80,28 @@ input[type="checkbox"] {
 }
 
 .button-container {
-  background-color: rgb(188, 186, 186);
+  background-color: var(--light-blue);
+}
+
+#clear-btn {
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 18px;
+  padding: 5px 8px;
+  background-color: var(--purple);
 }
 
 #clear-btn:hover {
-  color: rgb(111, 110, 110);
+  background-color: var(--light-purple);
+  font-weight: 600;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 #add-btn {
+  color: var(--purple);
   cursor: pointer;
-}
-
-.bg-orange {
-  background-color: orange;
+  padding: 5px;
+  border-radius: 50%;
 }
 
 .input-style {
@@ -83,20 +112,25 @@ input[type="checkbox"] {
 }
 
 .add-to-list {
-  border-bottom: 1px solid black;
+  background-color: #fff;
+  border-bottom: 1px solid var(--sky-blue);
 }
 
 .description-text {
   border: none;
+  color: #fff;
   background-color: inherit;
   padding: 10px 12px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .description-text:focus {
   border: none;
   background-color: inherit;
   outline: none;
+  cursor: pointer;
 }
 
 .input-style:focus {
@@ -105,9 +139,31 @@ input[type="checkbox"] {
 }
 
 .linethrough-text {
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
+  color: red;
+  text-decoration-color: rgb(151, 2, 2);
 }
 
 #load-btn {
   cursor: pointer;
+  font-size: 21px;
+  animation: rotation 2s  infinite linear;
+}
+
+.bg-orange {
+  background-color: #e966a0 !important;
+}
+
+::placeholder {
+  color: var(--purple);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
