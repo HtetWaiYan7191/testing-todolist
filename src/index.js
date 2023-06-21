@@ -73,29 +73,38 @@ const showTask = () => {
     inputText.readOnly = true;
   };
   checkboxContainers.forEach((checkbox) => {
+    let previousState = checkbox.checked;
     const toDoTask = checkbox.parentElement.firstElementChild.nextElementSibling;
     readOnlyAdd(toDoTask);
     checkbox.addEventListener('change', (e) => {
+      const currentState = e.target.checked;
       if (e.target.checked) {
         toDoTask.classList.add('linethrough-text');
-        console.log('Checkbox is checked');
-      // Perform actions when checkbox is checked
       } else {
-        console.log('Checkbox is unchecked');
         toDoTask.classList.remove('linethrough-text');
-      // Perform actions when checkbox is unchecked
       }
+
+      if (currentState !== previousState) {
+        storeTasks.forEach((task) => {
+          if (task.description === toDoTask.value) {
+            task.completed = currentState;
+          }
+        });
+
+        storeLocalStorage(storeTasks);
+      }
+      previousState = currentState;
     });
   });
 
   const addedTasks = document.querySelectorAll('.description-text');
   addedTasks.forEach((task, index) => {
     task.addEventListener('dblclick', (e) => {
+      e.preventDefault();
       e.target.readOnly = false;
       const tempStoreIcons = task.parentElement.parentElement.querySelector('.fa-ellipsis-vertical');
       if (tempStoreIcons) {
         const ellipsisIcon = tempStoreIcons;
-        console.log(ellipsisIcon);
         const index = ellipsisIcon.getAttribute('id');
         task.parentElement.parentElement.classList.add('bg-orange');
         ellipsisIcon.classList.remove('fa-ellipsis-vertical');
@@ -112,7 +121,8 @@ const showTask = () => {
       }
     });
     // Edit
-    task.addEventListener('input', () => {
+    task.addEventListener('input', (e) => {
+      e.preventDefault();
       const data = task.value.trim();
       storeTasks = edit(storeTasks, data, index);
       showTask();
