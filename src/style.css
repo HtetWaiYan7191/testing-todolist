@@ -141,7 +141,9 @@ input[type="checkbox"] {
 }
 
 .linethrough-text {
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
+  color: red;
+  text-decoration-color: rgb(151, 2, 2);
 }
 
 #load-btn {
